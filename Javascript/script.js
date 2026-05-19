@@ -99,7 +99,7 @@ function calculate() {
 
     // Format percentage
     let formattedExpression =
-      expression.replace(/%/g, "/100");
+      expression.replace(/%/g, "/");
 
     // Calculate result
     const result =
