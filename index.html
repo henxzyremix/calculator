@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- <script src="/Calc/Javascript/script.js"></script> -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#adc6ff",
+                    "on-primary-fixed-variant": "#004395",
+                    "on-tertiary-container": "#3e2400",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-container": "#abb9d2",
+                    "secondary-fixed-dim": "#b9c7e0",
+                    "inverse-primary": "#005ac2",
+                    "primary-fixed": "#d8e2ff",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-secondary-fixed-variant": "#3a485c",
+                    "secondary": "#b9c7e0",
+                    "inverse-on-surface": "#263143",
+                    "surface-bright": "#2f3a4c",
+                    "on-surface-variant": "#c2c6d6",
+                    "background": "#081425",
+                    "on-tertiary": "#472a00",
+                    "surface-dim": "#081425",
+                    "primary": "#adc6ff",
+                    "on-secondary": "#233144",
+                    "secondary-fixed": "#d5e3fd",
+                    "outline-variant": "#424754",
+                    "on-secondary-fixed": "#0d1c2f",
+                    "tertiary": "#ffb95f",
+                    "surface-container-lowest": "#040e1f",
+                    "secondary-container": "#3c4a5e",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-surface": "#d8e3fb",
+                    "on-primary": "#002e6a",
+                    "surface": "#081425",
+                    "outline": "#8c909f",
+                    "surface-container-highest": "#2a3548",
+                    "on-background": "#d8e3fb",
+                    "tertiary-container": "#ca8100",
+                    "surface-container-low": "#111c2d",
+                    "error": "#ffb4ab",
+                    "surface-container": "#152031",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "surface-variant": "#2a3548",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "surface-container-high": "#1f2a3c",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-primary-container": "#00285d",
+                    "inverse-surface": "#d8e3fb",
+                    "on-error": "#690005",
+                    "primary-container": "#4d8eff",
+                    "on-primary-fixed": "#001a42"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "display-padding": "32px",
+                    "button-gap": "12px",
+                    "grid-margin": "24px",
+                    "touch-target-min": "64px"
+            },
+            "fontFamily": {
+                    "button-label": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "history-item": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "button-label": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "display-lg-mobile": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "history-item": ["18px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-button-label overflow-hidden">
+<!-- TopAppBar -->
+  <header class="docked full-width top-0 bg-background dark:bg-background flex justify-between items-center w-full px-grid-margin py-4 z-50">
+    <div class="flex items-center gap-4">
+      <button class="text-primary dark:text-primary hover:bg-surface-container dark:hover:bg-surface-container p-2 rounded-full transition-transform active:scale-95 duration-100">
+        <span class="material-symbols-outlined" data-icon="menu">menu</span>
+      </button>
+      <h1 class="text-label-sm font-label-sm font-bold tracking-widest uppercase text-primary dark:text-primary">Calculator By Ramy</h1>
+    </div>
+    <a class="text-primary dark:text-primary hover:bg-surface-container dark:hover:bg-surface-container p-2 rounded-full transition-transform active:scale-95 duration-100" href="history.html">
+      <span class="material-symbols-outlined" data-icon="history">history</span>
+    </a>
+  </header>
+<!-- Main Content (Canvas) -->
+  <main class="flex-grow flex flex-col px-grid-margin pb-24">
+  <!-- Calculation Display Area -->
+    <div class="flex-grow flex flex-col justify-end items-end py-display-padding space-y-2 overflow-hidden">
+      <div class="w-full text-right overflow-x-auto whitespace-nowrap scrollbar-hide">
+        <span class="text-on-surface-variant font-history-item text-history-item">0</span>
+      </div>
+      <div class="w-full text-right overflow-x-auto whitespace-nowrap scrollbar-hide">
+        <span class="text-on-surface font-display-lg-mobile text-display-lg-mobile">0</span>
+      </div>
+    </div>
+  <!-- Keypad Container -->
+    <div class="grid grid-cols-4 gap-button-gap w-full max-w-md mx-auto">
+    <!-- Row 1 -->
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container-highest text-error font-button-label text-button-label active:scale-95 transition-transform duration-100">C</button>
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-secondary-container text-primary font-button-label text-button-label active:scale-95 transition-transform duration-100">
+        <span class="material-symbols-outlined" data-icon="backspace">backspace</span>
+      </button>
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-secondary-container text-primary font-button-label text-button-label active:scale-95 transition-transform duration-100">%</button>
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-secondary-container text-primary font-button-label text-button-label active:scale-95 transition-transform duration-100">
+        <span class="material-symbols-outlined" data-icon="division">article</span>
+      </button>
+    <!-- Row 2 -->
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface font-button-label text-button-label active:scale-95 transition-transform duration-100">7</button>
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface font-button-label text-button-label active:scale-95 transition-transform duration-100">8</button>
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface font-button-label text-button-label active:scale-95 transition-transform duration-100">9</button>
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-secondary-container text-primary font-button-label text-button-label active:scale-95 transition-transform duration-100">
+        <span class="material-symbols-outlined" data-icon="close">close</span>
+      </button>
+    <!-- Row 3 -->
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface font-button-label text-button-label active:scale-95 transition-transform duration-100">4</button>
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface font-button-label text-button-label active:scale-95 transition-transform duration-100">5</button>
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface font-button-label text-button-label active:scale-95 transition-transform duration-100">6</button>
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-secondary-container text-primary font-button-label text-button-label active:scale-95 transition-transform duration-100">
+        <span class="material-symbols-outlined" data-icon="remove">remove</span>
+      </button>
+    <!-- Row 4 -->
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface font-button-label text-button-label active:scale-95 transition-transform duration-100">1</button>
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface font-button-label text-button-label active:scale-95 transition-transform duration-100">2</button>
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface font-button-label text-button-label active:scale-95 transition-transform duration-100">3</button>
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-secondary-container text-primary font-button-label text-button-label active:scale-95 transition-transform duration-100">
+        <span class="material-symbols-outlined" data-icon="add">add</span>
+      </button>
+    <!-- Row 5 -->
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface font-button-label text-button-label active:scale-95 transition-transform duration-100">0</button>
+      <button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface font-button-label text-button-label active:scale-95 transition-transform duration-100">.</button>
+      <button class="col-span-2 flex items-center justify-center rounded-xl bg-primary-container text-on-primary-container font-button-label text-button-label active:scale-95 transition-transform duration-100 shadow-lg">
+        <span class="material-symbols-outlined" data-icon="equal">equal</span>
+      </button>
+    </div>
+  </main>
+<!-- BottomNavBar -->
+  <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center py-3 px-4 bg-surface-container dark:bg-surface-container docked full-width rounded-t-xl shadow-[0px_-8px_24px_rgba(0,0,0,0.3)]">
+<!-- Basic (Active) -->
+  <a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container dark:text-on-primary-container rounded-full px-6 py-1 active:scale-95 transition-all duration-150" href="index.html">
+    <span class="material-symbols-outlined" data-icon="calculate" style="font-variation-settings: 'FILL' 1;">calculate</span>
+    <span class="text-label-sm font-label-sm">Basic</span>
+  </a>
+<!-- Scientific -->
+  <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-6 py-1 hover:text-primary dark:hover:text-primary active:scale-95 transition-all duration-150" href="science.html">
+    <span class="material-symbols-outlined" data-icon="science">science</span>
+    <span class="text-label-sm font-label-sm">Scientific</span>
+  </a>
+<!-- History -->
+  <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-6 py-1 hover:text-primary dark:hover:text-primary active:scale-95 transition-all duration-150" href="history.html">
+    <span class="material-symbols-outlined" data-icon="history">history</span>
+    <span class="text-label-sm font-label-sm">History</span>
+  </a>
+  </nav>
+<script src="/Calc/Javascript/script.js"></script>
+</body>
+</html>
