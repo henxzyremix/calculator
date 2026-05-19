@@ -47,10 +47,6 @@
         appendOperator("/");
         break;
 
-      case "%":
-        appendOperator("%");
-        break;
-
       case "equal":
         calculate();
         break;
@@ -94,14 +90,14 @@ function calculate() {
 
   try {
 
-    // Save original expression BEFORE overwrite
+    // Save original expression
     const originalExpression = expression;
 
-    // Format percentage
+    // FIX PERCENTAGE
     let formattedExpression =
-      expression.replace(/%/g, "/");
+      expression.replace(/%/g, "/100");
 
-    // Calculate result
+    // Calculate
     const result =
       eval(formattedExpression);
 
@@ -112,13 +108,13 @@ function calculate() {
     expressionDisplay.textContent =
       originalExpression;
 
-    // SAVE TO HISTORY
+    // Save History
     saveToHistory(
       originalExpression,
       formatNumber(result)
     );
 
-    // Continue calculation
+    // Continue calculations
     expression = result.toString();
 
   } catch (error) {
@@ -126,22 +122,31 @@ function calculate() {
     resultDisplay.textContent = "Error";
   }
 }
-  function updateDisplay() {
-    expressionDisplay.textContent = expression || "0";
+function updateDisplay() {
 
-    try {
-      let formattedExpression = expression.replace(/%/g, "/");
+  expressionDisplay.textContent =
+    expression || "0";
 
-      const preview = eval(formattedExpression);
+  try {
 
-      if (expression !== "") {
-        resultDisplay.textContent = formatNumber(preview);
-      }
-    } catch {
-      // Ignore invalid temporary expressions
+    // FIX PERCENTAGE
+    let formattedExpression =
+      expression.replace(/%/g, "/100");
+
+    const preview =
+      eval(formattedExpression);
+
+    if (expression !== "") {
+
+      resultDisplay.textContent =
+        formatNumber(preview);
     }
-  }
 
+  } catch {
+
+    // Ignore invalid expressions
+  }
+}
   function formatNumber(num) {
     return Number(num).toLocaleString("en-US", {
       maximumFractionDigits: 10,
