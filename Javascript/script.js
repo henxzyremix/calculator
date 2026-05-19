@@ -130,7 +130,7 @@ function calculate() {
     expressionDisplay.textContent = expression || "0";
 
     try {
-      let formattedExpression = expression.replace(/%/g, "/100");
+      let formattedExpression = expression.replace(/%/g, "/");
 
       const preview = eval(formattedExpression);
 
